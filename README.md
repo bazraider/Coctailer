@@ -1,1 +1,0 @@
-# coctails-solo-project
