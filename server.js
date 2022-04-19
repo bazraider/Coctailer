@@ -1,9 +1,12 @@
 const express = require('express');
 const path = require('path');
+require('dotenv').config();
 const { sequelize } = require('./db/models');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT ?? 3000;
+
+app.use('/', require('./routes/index'));
 
 async function tryconnect() {
   try {
