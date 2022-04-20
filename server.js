@@ -2,11 +2,19 @@ const express = require('express');
 const path = require('path');
 require('dotenv').config();
 const { sequelize } = require('./db/models');
+const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/login');
+const registrationRouter = require('./routes/registration');
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
-app.use('/', require('./routes/index'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use('/', indexRouter);
+app.use('/', loginRouter);
+app.use('/', registrationRouter);
 
 async function tryconnect() {
   try {

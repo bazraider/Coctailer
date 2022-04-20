@@ -1,7 +1,6 @@
-const { UserRoom } = require('../client/src/pages/UserRoom');
+const loginRouter = require('express').Router();
 const bcrypt = require('bcrypt');
 const { check, validationResult } = require('express-validator');
-const loginRouter = require('express').Router();
 const jwt = require('jsonwebtoken');
 const { User } = require('../db/models');
 
@@ -19,15 +18,14 @@ loginRouter.post(
         });
       }
 
-      const { name, email, password } = req.body;
-      const user = await User.findOne({ where: email });
+      const { email, password } = req.body;
+      const user = await User.findOne({ where: { email } });
       if (!user) {
         return res.status(400).json({ message: 'Пользователь с таким e-mail не найден' });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
-
-      if (isMatch) {
+      if (!isMatch) {
         return res.status(400).json({ message: 'Неверный пароль, попробуйте снова' });
       }
 
