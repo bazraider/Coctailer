@@ -12,7 +12,7 @@ const Registration = () => {
 
   const registerHandler = async () => {
     try {
-      await request('/register', 'POST', { ...form })
+      const data = await request('/register', 'POST', { ...form })
     } catch (error) {
       
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, useNavigate} from 'react-router-dom';
 import {IndexPage} from './pages/IndexPage';
 import {RandomCoctailPage} from './pages/RandomCoctailPage';
 import {FindCoctailByFilter} from './pages/FindCoctailByFilter';
@@ -10,6 +10,9 @@ import {Login} from './pages/Login';
 import {Layout} from './components/Layout';
 
 export const useRoutes = (isAuthenticated) => {
+  
+  const navigate = useNavigate()
+  
   if (isAuthenticated) {
     return (
       <Route path="/" element={<Layout />}>
@@ -22,7 +25,7 @@ export const useRoutes = (isAuthenticated) => {
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     )
-  }
+  } else {
 
   return (
     <Route path="/" element={<Layout />}>
@@ -30,9 +33,13 @@ export const useRoutes = (isAuthenticated) => {
       <Route path="/find" element={<FindCoctailByFilter />} />
       <Route path="/random" element={<RandomCoctailPage />} />
       <Route path="/user/:id" element={<UserRoom />} />
-      <Route path="/login" element={<Login />} />
+      <Route 
+        path="/login" 
+        element={<Login />} 
+        />
       <Route path="/register" element={<Registration />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   )
+}
 }

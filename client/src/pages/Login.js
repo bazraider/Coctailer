@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
+import { LoginContext } from '../context/LoginContext';
 import {useHttp} from '../hooks/http.hook'
 
-const Login = () => {  
+const Login = () => {
+  const login = useContext(LoginContext);
   const {loading, request} = useHttp();
-  
+ 
   const [form, setForm] = useState({email: '', password: ''})
 
   const changeHandler = event => {
@@ -12,7 +14,8 @@ const Login = () => {
 
   const loginHandler = async () => {
     try {
-      await request('/login', 'POST', { ...form })
+      const data = await request('/login', 'POST', { ...form })
+      login.login(data.token, data.userId);
     } catch (error) {
       
     }

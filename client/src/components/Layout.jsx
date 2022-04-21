@@ -1,22 +1,24 @@
-import {NavLink, Outlet} from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Outlet, } from 'react-router-dom';
+import { useLogin } from '../hooks/login.hook';
+import {Navbar} from './Navbar'
+import { LoginContext } from '../context/LoginContext'
+
 
 const Layout = () => {
+  const {token, login, logout, userId} = useLogin();
+  const isAuthenticated = !!token
+  const navbar = Navbar()
+
   return (
     <>
-    <header>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/find">Find Coctail</NavLink>
-      <NavLink to="/random">Random Coctail</NavLink>
-      <NavLink to="/user/:id">User room</NavLink>
-      <NavLink to="/login">Login</NavLink>
-      <NavLink to="/register">Registration</NavLink>
-    </header>
-
+    {navbar}
     <main className='container'>
       <Outlet />
     </main>
-
-    <footer>2022</footer>
+    <footer>
+      2022
+    </footer>
     </>
   )
 }
