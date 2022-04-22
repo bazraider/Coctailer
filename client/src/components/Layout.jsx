@@ -1,13 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Outlet, } from 'react-router-dom';
-import { useLogin } from '../hooks/login.hook';
-import {Navbar} from './Navbar'
-import { LoginContext } from '../context/LoginContext'
+import { Navbar } from './Navbar'
 
 
 const Layout = () => {
-  const {token, login, logout, userId} = useLogin();
-  const isAuthenticated = !!token
+
   const navbar = Navbar()
 
   return (

@@ -25,9 +25,10 @@
 }
 
 body {
-  background-image: url(../public/img/bg-coctails.jpg);
+  background-image: url(../public/img/bg-waterfall.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  color: pink;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -56,11 +57,11 @@ h1 {
   text-align: center;
 }
 
-/* .container {
+.container {
   max-width: 900px;
   padding: 2rem 0;
   margin: 0 auto;
-} */
+}
 
 .active {
   color: rgb(53, 159, 195);
@@ -102,7 +103,7 @@ h1 {
 
 /*-----------------------------> Стиль для карточки <------------------------------*/
 
-#drink-section {
+.drink-section {
   text-align: center;
   width: 320px;
   margin: 20px auto;
@@ -116,6 +117,8 @@ h1 {
 
 .flipper {
   position: relative;
+  border-radius: 20px;
+
   width: 320px;
   height: 280px;
   -webkit-transform-style: preserve-3d;
@@ -130,6 +133,8 @@ h1 {
 .front,
 .back {
   box-sizing: border-box;
+  border-radius: 20px;
+  border: 5px solid pink;
   font-family: 'Cabin', sans-serif;
   position: absolute;
   top: 0;
@@ -159,7 +164,7 @@ i {
   margin-bottom: 15px;
 }
 
-h3 {
+h2 {
   font-size: 16px;
   line-height: 20px;
   text-transform: uppercase;
@@ -171,7 +176,7 @@ p {
   line-height: 25px;
 }
 
-.header h3 {
+.header h2 {
   color: #18191a;
 }
 
@@ -186,13 +191,14 @@ p {
   transform: rotateY(-180deg);
   background: #DCB8B2;
   color: white;
+  overflow: auto;
 }
 
-.back h3 {
+.back h2 {
   position: relative;
 }
 
-.back h3:after {
+.back h2:after {
   content: "";
   width: 50px;
   height: 1px;
@@ -207,9 +213,15 @@ p {
   padding-top: 15px;
 }
 
-.container:hover .flipper {
+.drink-section:hover .flipper {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -ms-transform: rotateY(180deg);
   transform: rotateY(180deg);
+}
+
+/*-----------------------------> Стиль для поисковой строки <------------------------------*/
+
+.form-inline {
+  display: flex;
 }
