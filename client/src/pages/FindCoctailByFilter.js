@@ -16,12 +16,15 @@ const FindCoctailByFilter = () => {
       const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${coctailInput}`);
       const data = await response.json();
       const { drinks } = data;
+
+      console.log(drinks);
+
       setData(drinks)
     } catch (error) {
       
     }
   }
-  
+
   return (
     <div>
       <h1>Find Coctail By Filter</h1>
@@ -40,16 +43,41 @@ const FindCoctailByFilter = () => {
             type="submit">Search</button>
         </form>
       </li>
+
       <div className="polina">
-        {data &&
+
+      {data &&
           data.map(elem => {
+            const img = elem.strDrinkThumb.toString()
+            
+            const backSide = document.querySelector('.back');
+            
+            for (let i = 1; i < 16; i++) {
+
+              if (elem[`strIngredient${i}`] === null || elem[`strIngredient${i}`] === '') {
+                break
+              }
+
+              const ingridients = document.createElement('ingridients-list');
+              ingridients.innerHTML = elem[`strMeasure${i}`] + ': ' + elem[`strIngredient${i}`];
+              backSide.appendChild(ingridients);
+            }
+
+
+
+
+
+
+
             return (
-              <div className="drink-section">
+              <div className="drink-all-section">
                 <div className="flipper">
                   <div className="front">
                     <div className="header">
-                      <i className="fa fa-creative-commons fa-2x"></i>
-                      <h2>{elem.strDrink}</h2>
+                      <img src={img} alt="img of coctail"/>
+                      <div className="text">
+                        <h2>{elem.strDrink}</h2>
+                      </div>
                     </div>
                   </div>
                   <div className="back">
@@ -57,10 +85,11 @@ const FindCoctailByFilter = () => {
                     <p></p>
                   </div>
                 </div>
-             </div>
-            );
-          })}
+              </div>
+              );
+            })}
       </div>
+
     </div>
   )
 }

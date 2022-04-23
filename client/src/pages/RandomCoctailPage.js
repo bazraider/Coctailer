@@ -13,15 +13,17 @@ const RandomCoctailPage = () => {
         id="shadowtest"
         onClick={getRandomCoctail}
         >
-        Получить
+        Крутить колесо фортуны
       </button>
 
-      <div className="drink-section">
+      <div className="drink-random-section">
         <div className="flipper">
           <div className="front">
             <div className="header">
-              <i className="fa fa-creative-commons fa-2x"></i>
-              <h2></h2>
+              <img src=""/>
+              <div className="text">
+                <h2></h2>
+              </div>
             </div>
           </div>
           <div className="back">
@@ -30,7 +32,6 @@ const RandomCoctailPage = () => {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

@@ -38,6 +38,8 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
+    "react-image": "^4.0.3",
+    "react-imgix": "^9.5.0",
     "sequelize": "^6.19.0",
     "sequelize-cli": "^6.4.1"
   }

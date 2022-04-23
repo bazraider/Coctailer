@@ -6,14 +6,17 @@ async function getRandomCoctail() {
 
 function displayRandomCoctail (coctail) {
   
+  //------------------------> Общий контейнер карточки
+  const cardCoctail = document.querySelector('.drink-random-section')
+  cardCoctail.style.display = 'block';
+
   //------------------------> Название Коктейля
-  const nameCoctail = document.querySelector('.header > h2')
+  const nameCoctail = document.querySelector('.text > h2')
   nameCoctail.innerHTML = coctail.drinks[0].strDrink
   
   //------------------------> Фото Коктейля
-  const frontSide = document.querySelector('.front');
-  frontSide.style.backgroundImage = `url('${coctail.drinks[0].strDrinkThumb}')`;
-  frontSide.style.backgroundSize = 'cover';
+  const imgCoctail = document.querySelector('.header > img')
+  imgCoctail.setAttribute('src', `${coctail.drinks[0].strDrinkThumb}`);
 
   //------------------------> Состав Коктейля
   const backSide = document.querySelector('.back');
