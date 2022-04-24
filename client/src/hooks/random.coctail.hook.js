@@ -1,3 +1,13 @@
+// import translate from "translate";
+
+// translate.engine = "google"; // Or "yandex", "libre", "deepl"
+// translate.key = "something else";
+
+// async function translateReceipe(receipe) {
+//   const text = await translate(receipe, "ru");
+//   console.log(text);
+// }
+
 async function getRandomCoctail() {
   const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
   const data = await response.json();
@@ -29,7 +39,7 @@ function displayRandomCoctail (coctail) {
       break
     }
 
-    const ingridients = document.createElement('ingridients-list');
+    const ingridients = document.createElement('li');
     ingridients.innerHTML = coctail.drinks[0][`strMeasure${i}`] + ': ' + coctail.drinks[0][`strIngredient${i}`];
     backSide.appendChild(ingridients);
   }
@@ -37,7 +47,7 @@ function displayRandomCoctail (coctail) {
   //------------------------> Рецепт Коктейля
 
   const recipeCoctail = document.querySelector('.back > p');
-  recipeCoctail.innerHTML = coctail.drinks[0].strInstructions
+  recipeCoctail.innerHTML = coctail.drinks[0].strInstructions;
 
 }
 

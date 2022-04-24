@@ -14,26 +14,26 @@ const Navbar = () => {
   if (login.isAuthenticated) {
     return (
       <header>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/find">Find Coctail</NavLink>
-        <NavLink to="/random">Random Coctail</NavLink>
-        <NavLink to="/user/:id">User room</NavLink>
+        <NavLink to="/">Главная</NavLink>
+        <NavLink to="/find">Найти коктейль</NavLink>
+        <NavLink to="/random">Случайный коктейль</NavLink>
+        <NavLink to="/user/:id">Личный кабинет</NavLink>
         <Link to="/" 
           onClick={logoutHandler}
           >
-          Logout
+          Выйти
           </Link>
       </header>
     )
   } else {
   return (
     <header>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/find">Find Coctail</NavLink>
-      <NavLink to="/random">Random Coctail</NavLink>
-      <NavLink to="/user/:id">User room</NavLink>
-      <NavLink to="/login">Login</NavLink>
-      <NavLink to="/register">Registration</NavLink>
+      <NavLink to="/">Главная</NavLink>
+      <NavLink to="/find">Найти коктейль</NavLink>
+      <NavLink to="/random">Случайный коктейль</NavLink>
+      {/* <NavLink to="/user/:id">Личный кабинет</NavLink> */}
+      <NavLink to="/login">Войти</NavLink>
+      <NavLink to="/register">Зарегистрироваться</NavLink>
     </header>
   )
 }

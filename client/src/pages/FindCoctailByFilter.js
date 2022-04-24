@@ -16,60 +16,50 @@ const FindCoctailByFilter = () => {
       const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${coctailInput}`);
       const data = await response.json();
       const { drinks } = data;
-
-      console.log(drinks);
-
       setData(drinks)
+      document.querySelector('.whatShouldYouDo > p').style.display = 'none';
     } catch (error) {
       
     }
   }
+  
+  const reciepe = (coctailObj) => {
+    let array = [];
+    for (let i = 1; i < 16; i++) {
+      if (coctailObj[`strMeasure${i}`] === null || coctailObj[`strMeasure${i}`] === '') break;
+      else array.push(coctailObj[`strMeasure${i}`] + ': ' + coctailObj[`strIngredient${i}`]);
+    }
+    return array;
+  }
 
   return (
-    <div>
-      <h1>Find Coctail By Filter</h1>
+    <>
+      <form action="" method="get">
+        <input 
+          name="coctailInput" 
+          placeholder="Искать здесь..."
+          onChange={changeHandler} 
+          type="search" />
+        <button 
+          id="onNamePage"
+          type="submit"
+          onClick={search}
+          ></button>
+      </form>      
 
-      <li className="nav-item mx-auto">
-        <form className="form-inline">
-          <input 
-            name="coctailInput" 
-            className="form-control" 
-            type="text" 
-            onChange={changeHandler}
-            placeholder="Введите название коктейля" />
-          <button 
-            className="btn btn-outline-success" 
-            onClick={search}
-            type="submit">Search</button>
-        </form>
-      </li>
+      <div class="whatShouldYouDo">
+        <img src="/img/findByNamePic52.png" alt="coctail"></img>
+        <p>Введите название коктейля в поисковую строку</p>
+      </div>
 
-      <div className="polina">
+      <div className="searchResultByName">
 
       {data &&
           data.map(elem => {
             const img = elem.strDrinkThumb.toString()
             
-            const backSide = document.querySelector('.back');
-            
-            for (let i = 1; i < 16; i++) {
-
-              if (elem[`strIngredient${i}`] === null || elem[`strIngredient${i}`] === '') {
-                break
-              }
-
-              const ingridients = document.createElement('ingridients-list');
-              ingridients.innerHTML = elem[`strMeasure${i}`] + ': ' + elem[`strIngredient${i}`];
-              backSide.appendChild(ingridients);
-            }
-
-
-
-
-
-
-
             return (
+             
               <div className="drink-all-section">
                 <div className="flipper">
                   <div className="front">
@@ -82,7 +72,8 @@ const FindCoctailByFilter = () => {
                   </div>
                   <div className="back">
                     <h2>{`Коктейль ${elem.strDrink}`}</h2>
-                    <p></p>
+                    <p>{elem.strInstructions}</p>
+                    {reciepe(elem).map(item => <li>{item}</li>)}
                   </div>
                 </div>
               </div>
@@ -90,7 +81,7 @@ const FindCoctailByFilter = () => {
             })}
       </div>
 
-    </div>
+    </>
   )
 }
 

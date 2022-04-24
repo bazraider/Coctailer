@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 require('dotenv').config();
+const cors = require('cors');
 const { sequelize } = require('./db/models');
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
@@ -11,6 +12,13 @@ const PORT = process.env.PORT ?? 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const corsConfig = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+};
+
+app.use(cors(corsConfig));
 
 app.use('/', indexRouter);
 app.use('/', loginRouter);

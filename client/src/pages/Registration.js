@@ -57,7 +57,7 @@ const Registration = () => {
         />
         <label htmlFor="floatingPassword">Введите пароль</label>
       </div>
-        <small id="passwordHelpBlock" class="form-text text-muted mb-4" >
+        <small id="passwordHelpBlock" className="form-text text-muted mb-4" >
           Длина пароля должна быть не менее 6 символов.
         </small>
 

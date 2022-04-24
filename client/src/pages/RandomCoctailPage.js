@@ -6,14 +6,14 @@ const RandomCoctailPage = () => {
     
   return (
     <div>
-      <h1>Получи свой случайный коктейль</h1>
+      <h1>Твой случайный коктейль...</h1>
       <button 
         type="button" 
         className="btn btn-light btn-lg" 
         id="shadowtest"
         onClick={getRandomCoctail}
         >
-        Крутить колесо фортуны
+        Получить
       </button>
 
       <div className="drink-random-section">

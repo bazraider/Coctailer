@@ -32,7 +32,7 @@ export const useRoutes = (isAuthenticated) => {
       <Route index element={ <IndexPage /> } />
       <Route path="/find" element={<FindCoctailByFilter />} />
       <Route path="/random" element={<RandomCoctailPage />} />
-      <Route path="/user/:id" element={<UserRoom />} />
+      {/* <Route path="/user/:id" element={<UserRoom />} /> */}
       <Route 
         path="/login" 
         element={<Login />} 
