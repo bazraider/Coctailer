@@ -1,4 +1,5 @@
 import React, {useContext, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../context/LoginContext';
 import {useHttp} from '../hooks/http.hook'
 
@@ -14,12 +15,14 @@ const Login = () => {
 
   const loginHandler = async () => {
     try {
-      const data = await request('/login', 'POST', { ...form })
+      const data = await request('http://localhost:4000/login', 'POST', { ...form })
       login.login(data.token, data.userId);
     } catch (error) {
       
     }
   }
+
+  const navigate = useNavigate();
 
   return (
     <div className="container col-8 bg-blue border bg-light" id='registerField'>
@@ -52,7 +55,7 @@ const Login = () => {
         type="button" 
         className="btn btn-light btn-lg" 
         id="shadowtest"
-        onClick={loginHandler}
+        onClick={() => {loginHandler(); navigate('/')}}
         disabled={loading}
         >
         Войти

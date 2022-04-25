@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import {useHttp} from '../hooks/http.hook'
 
 const Registration = () => {
@@ -12,11 +13,13 @@ const Registration = () => {
 
   const registerHandler = async () => {
     try {
-      const data = await request('/register', 'POST', { ...form })
+      const data = await request('http://localhost:4000/register', 'POST', { ...form })
     } catch (error) {
       
     }
   }
+
+  const navigate = useNavigate();
 
   return (
     <div className="container col-8 bg-blue border bg-light" id='registerField'>
@@ -65,7 +68,7 @@ const Registration = () => {
         type="button" 
         className="btn btn-light btn-lg" 
         id="shadowtest"
-        onClick={registerHandler}
+        onClick={() => {registerHandler(); navigate('/login')}}
         disabled={loading}
         >
         Зарегистрироваться

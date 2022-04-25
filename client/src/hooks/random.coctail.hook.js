@@ -1,14 +1,14 @@
 // ----------------------------------> Переводчик ---------------------------------
 
-// import translate from "translate";
+import translate from "translate";
 
-// translate.engine = "google"; // Or "yandex", "libre", "deepl"
-// translate.key = "something else";
+translate.engine = "google"; // Or "yandex", "libre", "deepl"
+translate.key = "something else";
 
-// async function translateReceipe(receipe) {
-//   const text = await translate(receipe, "ru");
-//   console.log(text);
-// }
+async function translateReceipe(receipe) {
+  const text = await translate(receipe, "ru");
+  return text;
+}
 
 // --------------------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ async function getRandomCoctail() {
   displayRandomCoctail(data);
 }
 
-function displayRandomCoctail (coctail) {
+async function displayRandomCoctail (coctail) {
   
   //------------------------> Общий контейнер карточки
   const cardCoctail = document.querySelector('.drink-random-section')
@@ -51,11 +51,12 @@ function displayRandomCoctail (coctail) {
   //------------------------> Рецепт Коктейля
 
   const recipeCoctail = document.querySelector('.back > p');
-  recipeCoctail.innerHTML = coctail.drinks[0].strInstructions;
+  recipeCoctail.innerHTML = await translateReceipe(coctail.drinks[0].strInstructions);
 
 }
 
 export {getRandomCoctail}
+export default translateReceipe
 
 
 
