@@ -1,3 +1,5 @@
+// ----------------------------------> Переводчик ---------------------------------
+
 // import translate from "translate";
 
 // translate.engine = "google"; // Or "yandex", "libre", "deepl"
@@ -7,6 +9,8 @@
 //   const text = await translate(receipe, "ru");
 //   console.log(text);
 // }
+
+// --------------------------------------------------------------------------------
 
 async function getRandomCoctail() {
   const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');

@@ -7,14 +7,13 @@ const RandomCoctailPage = () => {
   return (
     <div>
       <h1>Твой случайный коктейль...</h1>
-      <button 
-        type="button" 
-        className="btn btn-light btn-lg" 
-        id="shadowtest"
+      
+      <a
+        className="glow-button"
         onClick={getRandomCoctail}
         >
         Получить
-      </button>
+      </a>
 
       <div className="drink-random-section">
         <div className="flipper">

@@ -14,7 +14,7 @@ const Layout = () => {
       <Outlet />
     </main>
     <footer>
-      2022
+      Raccoons 2022
     </footer>
     </>
   )
