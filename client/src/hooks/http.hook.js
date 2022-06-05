@@ -16,16 +16,16 @@ const useHttp = () => {
       const data = await response.json()
 
       if (!response.ok) {
+        setError(data)
         throw new Error(data.message || 'Что-то пошло не так')
       }
-
+      
       setLoading(false)
-
+      
       return data
-
+      
     } catch (error) {
       setLoading(false)
-      setError(error.message)
       throw error
     }
   }, [])

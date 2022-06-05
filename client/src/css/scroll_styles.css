@@ -1,0 +1,18 @@
+#custom_scroll::-webkit-scrollbar {
+  display: none;
+  width: 15px;
+  left: 20px;
+}
+
+#custom_scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: rgb(249, 249, 253);
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#custom_scroll::-webkit-scrollbar-thumb {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  background: linear-gradient(180deg, #c4206f, #480827);
+}

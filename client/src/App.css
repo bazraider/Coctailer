@@ -133,11 +133,17 @@ footer {
   display: block;
 }
 
+/*-----------------------------> Всплывающее окно при регистрации <----------------*/
+
+.alert.alert-warning li {
+  text-align: start;
+}
+
 /*-----------------------------> Стиль для карточки <------------------------------*/
 
 .drink-random-section {
   font-family: 'Jura', sans-serif;
-  display: none;
+  /* display: none; */
   text-align: center;
   width: 320px;
   margin: 20px auto;
@@ -411,6 +417,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .title {
+  min-width: 700px;
   margin: 0;
   padding: 0;
   color: white;

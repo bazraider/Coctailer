@@ -5,7 +5,7 @@ import {useHttp} from '../hooks/http.hook'
 
 const Login = () => {
   const login = useContext(LoginContext);
-  const {loading, request} = useHttp();
+  const {loading, request, error} = useHttp();
  
   const [form, setForm] = useState({email: '', password: ''})
 
@@ -18,7 +18,7 @@ const Login = () => {
       const data = await request('http://localhost:4000/login', 'POST', { ...form })
       login.login(data.token, data.userId);
     } catch (error) {
-      
+      console.log(error)
     }
   }
 
@@ -51,10 +51,19 @@ const Login = () => {
         <label htmlFor="floatingPassword">Введите пароль</label>
       </div>
 
+      {error && 
+      <div className="alert alert-warning" role="alert">
+        <ul>
+          {error.message}
+          {error.errors && <li>{error.errors[0].msg}</li>}
+        </ul>
+      </div>}
+
       <button 
         type="button" 
         className="btn btn-light btn-lg" 
         id="shadowtest"
+        // onClick={loginHandler}
         onClick={() => {loginHandler(); navigate('/')}}
         disabled={loading}
         >

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import translateReceipe from '../hooks/random.coctail.hook'
+// import translateReceipe from '../hooks/random.coctail.hook'
 
 const FindCoctailByFilter = () => {
   
@@ -48,7 +48,7 @@ const FindCoctailByFilter = () => {
           ></button>
       </form>      
 
-      <div class="whatShouldYouDo">
+      <div className="whatShouldYouDo">
         <img src="/img/findByNamePic52.png" alt="coctail"></img>
         <p>Введите название коктейля в поисковую строку</p>
       </div>
@@ -56,12 +56,12 @@ const FindCoctailByFilter = () => {
       <div className="searchResultByName">
 
       {data &&
-          data.map(elem => {
+          data.map((elem, index) => {
             const img = elem.strDrinkThumb.toString()
             
             return (
              
-              <div className="drink-all-section">
+              <div className="drink-all-section" key={index}>
                 <div className="flipper">
                   <div className="front">
                     <div className="header">
@@ -71,10 +71,10 @@ const FindCoctailByFilter = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="back">
+                  <div className="back" id="custom_scroll">
                     <h2>{`Коктейль ${elem.strDrink}`}</h2>
                     <p>{elem.strInstructions}</p>
-                    {reciepe(elem).map(item => <li>{item}</li>)}
+                    {reciepe(elem).map((item, index) => <li key={index}>{item}</li>)}
                   </div>
                 </div>
               </div>
