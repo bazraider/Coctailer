@@ -1,5 +1,6 @@
 const express = require('express');
 require('dotenv').config();
+const path = require('path');
 const cors = require('cors');
 const { sequelize } = require('./db/models');
 const indexRouter = require('./routes/index');
@@ -22,6 +23,8 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use('/', loginRouter);
 app.use('/', registrationRouter);
+
+app.use(express.static(path.resolve(__dirname, './client/build')));
 
 async function tryconnect() {
   try {
